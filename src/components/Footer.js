@@ -22,7 +22,7 @@ const StyledFooter = styled.footer`
   color: #fff;
   font-weight: 600;
   padding: 1rem 0;
-  align-self: flex-end;
+  margin-top: auto;
 `;
 
 const Wrapper = styled.div`
