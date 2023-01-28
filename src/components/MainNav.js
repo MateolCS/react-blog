@@ -9,7 +9,7 @@ const MainNav = ({ showMenu }) => {
           <Link to="/">Home</Link>
         </li>
         <li>
-          <Link to="/posts">Posts</Link>
+          <Link to="/posts">Random post</Link>
         </li>
         <li>
           <Link to="/wordle">Wordle</Link>
@@ -21,7 +21,11 @@ const MainNav = ({ showMenu }) => {
 
 export default MainNav;
 
-const Nav = styled.nav``;
+const Nav = styled.nav`
+  @media (min-width: 768px) {
+    margin-right: 2rem;
+  }
+`;
 
 const NavList = styled.ul`
   display: ${({ showMenu }) => (showMenu ? "flex" : "none")};
@@ -41,5 +45,19 @@ const NavList = styled.ul`
     text-decoration: none;
     color: #fff;
     font-size: 1.5rem;
+
+    &:hover {
+      cursor: pointer;
+      color: #c4fcef;
+    }
+  }
+
+  @media (min-width: 768px) {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 0;
+    margin: 0;
+    gap: 2rem;
   }
 `;

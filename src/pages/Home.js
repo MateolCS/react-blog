@@ -7,13 +7,10 @@ import { createClient } from "contentful";
 const Home = () => {
   const [posts, setPosts] = useState([]);
 
-  console.log(process.env.REACT_APP_SPACE_ID);
-  console.log(process.env.REACT_APP_ACCESS_TOKEN);
-
   useEffect(() => {
     const client = createClient({
-      space: "fxxwtp95x4er",
-      accessToken: "ixd-sfqky4Ou0wkZh2psg4UHBXxiYor2WCGjRZgTvcg",
+      space: process.env.REACT_APP_CONTENTFUL_SPACE_ID,
+      accessToken: process.env.REACT_APP_CONTENTFUL_ACCESS_TOKEN,
     });
 
     client

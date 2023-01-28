@@ -1,14 +1,12 @@
 import React from "react";
 import { createClient } from "contentful";
-import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import styled from "styled-components";
 import Layout from "../components/Layout";
 
-const Post = () => {
-  const { slug } = useParams();
-  console.log(slug);
-  const [post, setPost] = useState({});
+const RandomPost = () => {
+  const [posts, setPosts] = useState({});
+  const [randomPost, setRandomPost] = useState({});
 
   useEffect(() => {
     const client = createClient({
@@ -17,26 +15,32 @@ const Post = () => {
     });
 
     client
-      .getEntries({ content_type: "blogPost", "fields.slug": slug })
+      .getEntries({
+        content_type: "blogPost",
+      })
       .then((response) => {
-        setPost(response.items[0]);
-        console.log(response.items[0]);
+        setPosts(response.items);
+        setRandomPost(
+          response.items[Math.floor(Math.random() * response.items.length)]
+        );
       })
       .catch(console.error);
-  }, [slug]);
+  }, []);
+
+  console.log(posts.length);
 
   return (
     <Layout>
       <PageWrapper>
-        <h1>{post.fields?.title}</h1>
-        <img src={post.fields?.photo.fields.file.url} alt="" />
-        <p>{post.fields?.content}</p>
+        <h1>{randomPost.fields?.title}</h1>
+        <img src={randomPost.fields?.photo.fields.file.url} alt="" />
+        <p>{randomPost.fields?.content}</p>
       </PageWrapper>
     </Layout>
   );
 };
 
-export default Post;
+export default RandomPost;
 
 const PageWrapper = styled.div`
 width 90%;

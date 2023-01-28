@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import MainNav from "./MainNav";
+import { Link } from "react-router-dom";
 import { FaBars } from "react-icons/fa";
 import { useState } from "react";
 const Header = () => {
@@ -14,7 +15,9 @@ const Header = () => {
   return (
     <StyledHeader>
       <Wrapper>
-        <Logo>Tech Blog</Logo>
+        <Logo>
+          <StyledLink to={"/"}>Tech Blog</StyledLink>
+        </Logo>
         <StyledBurger onClick={toggleMenu} />
       </Wrapper>
       <MainNav showMenu={isOpen} />
@@ -30,17 +33,24 @@ const StyledHeader = styled.header`
   display: flex;
   flex-direction: column;
   padding: 1rem 0;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    justify-content: space-between;
+  }
 `;
 
 const Logo = styled.h1`
-  font-size: 2rem;
-  color: #fff;
   text-align: center;
 `;
 
 const StyledBurger = styled(FaBars)`
   font-size: 2rem;
   color: #fff;
+
+  @media (min-width: 768px) {
+    display: none;
+  }
 `;
 
 const Wrapper = styled.div`
@@ -48,4 +58,14 @@ const Wrapper = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 0 1rem;
+`;
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  font-size: 2rem;
+  color: #fff;
+
+  &:hover {
+    cursor: pointer;
+  }
 `;
