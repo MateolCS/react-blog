@@ -51,7 +51,7 @@ h1 {
   font-size: 2rem;
   text-align: center;
   margin-bottom: 1rem;
-  color: #845ec2;
+  color: #462784;
 }
 
 img {

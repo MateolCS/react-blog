@@ -26,7 +26,7 @@ const StyledArticle = styled.article`
 
   h2 {
     font-size: 1.3rem;
-    color: #0081cf;
+    color: #462784;
     font-weight: 600;
     text-align: left;
   }
