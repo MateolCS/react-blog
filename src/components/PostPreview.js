@@ -38,6 +38,17 @@ const StyledArticle = styled.article`
   p {
     text-align: justify;
   }
+
+  @media (min-width: 768px) {
+    h2 {
+      font-size: 2rem;
+    }
+
+    img {
+      width: 60%;
+      margin: 0 auto;
+    }
+  }
 `;
 
 const StyledLink = styled(Link)`
